@@ -1,4 +1,5 @@
 import React from "react";
+import { decimalPointStyle, skewedDecimalPointStyle } from "../utils/decimalPointStyle";
 
 type DecimalPointType = {
     active: boolean;
@@ -8,14 +9,18 @@ type DecimalPointType = {
 };
 
 const DecimalPoint = ({ active, color, size, skew = false }: DecimalPointType) => {
+    const dpStyle = skew ? skewedDecimalPointStyle : decimalPointStyle;
+
     const outerStyle = {
         filter: active
             ? `drop-shadow(0px 0px ${size * 0.3}px ${color})`
             : "none",
         padding: size * 0.1,
         width: "fit-content",
-        position: "relative",
-        display: "inline-block",
+        position: "absolute",
+        transform: dpStyle.transform,
+        marginTop: `${size * dpStyle.marginTop}px`,
+        marginLeft: `${size * dpStyle.marginLeft}px`,
         zIndex: "2",
     } as React.CSSProperties;
 
@@ -24,8 +29,8 @@ const DecimalPoint = ({ active, color, size, skew = false }: DecimalPointType) =
         filter: active
             ? "opacity(1) grayscale(0)"
             : "opacity(0.3) grayscale(0.7)",
-        height: `${size * 0.38}px`,
-        width: `${size * 0.38}px`,
+        height: `${size * 0.8}px`,
+        width: `${size * 0.8}px`,
         borderRadius: "50%",
         transform: skew ? "skewX(-10deg)" : "none",
     } as React.CSSProperties;

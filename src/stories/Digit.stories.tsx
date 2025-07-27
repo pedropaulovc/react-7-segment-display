@@ -10,6 +10,7 @@ const meta = {
         color: { control: "color" },
         height: { control: "number" },
         char: { control: "text" },
+        showDecimalPoint: { control: "boolean" },
     },
 } satisfies Meta<typeof Digit>;
 
@@ -41,5 +42,15 @@ export const IllegalChar: Story = {
         height: 250,
         char: "^",
         skew: false,
+    },
+};
+
+export const WithDecimalPoint: Story = {
+    args: {
+        color: "green",
+        height: 250,
+        char: "8",
+        skew: false,
+        showDecimalPoint: true,
     },
 };

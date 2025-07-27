@@ -1,4 +1,5 @@
 import Segment from "./Segment";
+import DecimalPoint from "./DecimalPoint";
 import React from "react"; // Removed useEffect, useState
 import defaultCharMap, { CharToDigit } from "../utils/charToDigit"; // Use default map for fallback internally
 
@@ -16,6 +17,7 @@ type DigitType = {
     height: number;
     skew: boolean;
     charMap?: CharToDigit; // Optional custom map passed from Display
+    showDecimalPoint?: boolean; // Optional decimal point display
 };
 
 export const Digit = ({
@@ -24,6 +26,7 @@ export const Digit = ({
     height = 250,
     skew = false,
     charMap = defaultCharMap, // Use the default map if none is provided via props
+    showDecimalPoint = false,
 }: DigitType) => {
     const style = {
         height: `${height}px`,
@@ -31,6 +34,7 @@ export const Digit = ({
         zIndex: "1",
         padding: skew ? "8px 0px" : "0", // Keep original style calculation
         boxSizing: "border-box",
+        position: "relative",
     } as React.CSSProperties;
 
     // --- Calculate segments to render directly based on current props ---
@@ -94,6 +98,14 @@ export const Digit = ({
                     />
                 );
             })}
+            {showDecimalPoint && (
+                <DecimalPoint
+                    active={true}
+                    color={color}
+                    size={height / 12.5}
+                    skew={skew}
+                />
+            )}
         </div>
     );
 };
