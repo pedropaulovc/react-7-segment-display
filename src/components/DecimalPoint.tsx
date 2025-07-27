@@ -19,9 +19,10 @@ const DecimalPoint = ({ active, color, size, skew = false }: DecimalPointType) =
         width: "fit-content",
         position: "absolute",
         transform: dpStyle.transform,
-        bottom: `${size * 0.3}px`,
+        marginTop: `${size * 10.6}px`,
         left: `${size * 6.8}px`,
         zIndex: "2",
+        border: "6px solid transparent",
     } as React.CSSProperties;
 
     const innerStyle = {
