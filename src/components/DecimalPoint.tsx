@@ -19,8 +19,8 @@ const DecimalPoint = ({ active, color, size, skew = false }: DecimalPointType) =
         width: "fit-content",
         position: "absolute",
         transform: dpStyle.transform,
-        marginTop: `${size * dpStyle.marginTop}px`,
-        marginLeft: `${size * dpStyle.marginLeft}px`,
+        bottom: `${size * 0.3}px`,
+        left: `${size * 6.8}px`,
         zIndex: "2",
     } as React.CSSProperties;
 
@@ -29,8 +29,8 @@ const DecimalPoint = ({ active, color, size, skew = false }: DecimalPointType) =
         filter: active
             ? "opacity(1) grayscale(0)"
             : "opacity(0.3) grayscale(0.7)",
-        height: `${size * 0.8}px`,
-        width: `${size * 0.8}px`,
+        height: `${size}px`,
+        width: `${size}px`,
         borderRadius: "50%",
         transform: skew ? "skewX(-10deg)" : "none",
     } as React.CSSProperties;

@@ -30,7 +30,7 @@ export const Digit = ({
 }: DigitType) => {
     const style = {
         height: `${height}px`,
-        width: `${height * 0.6}px`,
+        width: showDecimalPoint ? `${height * 0.72}px` : `${height * 0.6}px`,
         zIndex: "1",
         padding: skew ? "8px 0px" : "0", // Keep original style calculation
         boxSizing: "border-box",
